@@ -5,80 +5,127 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Who We Are - Youth Transformation Center</title>
     <style>
+        /* General Styling */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
+            font-family: 'Georgia', serif; /* Classic serif font for a respectful tone */
+            background-color: #eaf3ff; /* Soft blue background */
+            color: #2a3d66;
             margin: 0;
             padding: 20px;
         }
         .container {
             max-width: 800px;
             margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15); /* Subtle shadow for depth */
+            border-radius: 8px;
         }
-        h1, h2 {
+
+        /* Section Headings */
+        h1 {
             text-align: center;
-            color: #333;
+            font-family: 'Palatino', serif; /* Elegant serif font for the main title */
+            font-size: 3em;
+            color: #003366; /* Dark blue for a formal look */
+            margin-bottom: 10px;
         }
-        .section {
+        h2 {
+            text-align: center;
+            color: #1a4876; /* Mid-blue for section headings */
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        /* Legacy Section for Holtham */
+        .founder-section {
+            background-color: #f0f5ff; /* Light blue background to set it apart */
+            padding: 20px;
+            border-radius: 8px;
             margin-bottom: 40px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            border-left: 8px solid #00509e; /* Bold left border to highlight */
         }
+        .founder-title {
+            font-size: 1.5em;
+            color: #003366;
+            font-family: 'Palatino', serif;
+        }
+        .founder-subtitle {
+            font-weight: bold;
+            font-size: 1.3em;
+            color: #00509e; /* Highlighted blue for titles */
+        }
+        .founder-text {
+            line-height: 1.6;
+            color: #2a3d66; /* Consistent text color */
+            margin-top: 10px;
+            font-size: 1.1em;
+        }
+
+        /* Profile and Member Sections */
         .profile, .board-member, .staff-member {
             display: flex;
             align-items: flex-start;
             margin-bottom: 20px;
         }
-        .profile .image-placeholder, .board-member .image-placeholder, .staff-member .image-placeholder {
+
+        /* Image Placeholders */
+        .image-placeholder {
             width: 100px;
             height: 100px;
-            background-color: #ccc; /* Light gray background as placeholder */
+            background-color: #d3d3d3; /* Light gray background as placeholder */
             border-radius: 50%;
             margin-right: 20px;
         }
+
+        /* Details Styling */
         .profile-details, .member-details {
             max-width: 600px;
         }
         .profile-details h3, .member-details h3 {
-            margin: 0 0 10px;
-            color: #333;
+            margin: 0 0 5px;
+            color: #00509e; /* Consistent blue for names */
+            font-size: 1.3em;
         }
         .profile-details p, .member-details p {
             margin: 0;
+            line-height: 1.5;
+            color: #4a688e; /* Softer blue for readability */
+        }
+
+        /* Section Divider */
+        .divider {
+            height: 1px;
+            background-color: #cfe2f3;
+            margin: 40px 0;
+            border: none;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Who We Are</h1>
-        <p>Youth Transformation Center is a not-for-profit 501(c)(3) HIGH IMPACT organization, dedicated to moving the worldwide movement of restorative justice to the tipping point as an effective alternative to suspension, expulsion, and incarceration.</p>
-        
-        <div class="section">
-            <h2>YTC Founder</h2>
+
+        <!-- Legacy Section for Jeannette R. Holtham -->
+        <div class="founder-section">
             <div class="profile">
                 <div class="image-placeholder"></div> <!-- Placeholder for Jeannette's image -->
                 <div class="profile-details">
-                    <h3>Jeannette R. Holtham</h3>
-                    <p><strong>Author, President, and Founder of Youth Transformation Center</strong></p>
-                    <p>Jeannette is a recognized leader in Colorado’s restorative justice movement, with extensive experience working with high-risk youth in alternative schools, detention centers, and prisons. She holds a BA in communications, graduating summa cum laude from Regis University. Her work has contributed significantly to advancing restorative justice in schools and the judicial system.</p>
-                </div>
-            </div>
-            <div class="profile">
-                <div class="image-placeholder"></div> <!-- Placeholder for André's image -->
-                <div class="profile-details">
-                    <h3>André Zarb-Cousin</h3>
-                    <p><strong>BOOMERANG Program Facilitator & co-author</strong></p>
-                    <p>Born in Malta, André is a former soccer coach and business executive. With a BA in business administration, he now focuses on inspiring youth to pursue their dreams and move away from risky behaviors.</p>
+                    <h3 class="founder-title">In Memory of Jeannette R. Holtham</h3>
+                    <p class="founder-subtitle">Author, President, and Founder of Youth Transformation Center</p>
+                    <p class="founder-text">Jeannette was a trailblazer in Colorado’s restorative justice movement and dedicated her life to transforming the lives of high-risk youth. With over two decades of hands-on work in alternative schools, detention centers, and prisons, Jeannette impacted the lives of over 5,000 young individuals across multiple states and countries. Her legacy lives on through Youth Transformation Center, inspiring youth to reach their fullest potential. Jeannette graduated summa cum laude from Regis University with a BA in Communications, receiving the Excellence in Communication Award. We honor her vision, leadership, and unrelenting passion to make a difference.</p>
                 </div>
             </div>
         </div>
-        
+
         <div class="section">
             <h2>Our Board Leadership</h2>
             <div class="board-member">
                 <div class="image-placeholder"></div> <!-- Placeholder for Deborah's image -->
                 <div class="member-details">
                     <h3>Deborah Hendrix</h3>
-                    <p><strong>YTC Board Chair</strong></p>
+                    <p><span class="highlight">YTC Board Chair</span></p>
                     <p>Executive Director Parents Challenge, Former School Board President for Harrison School District Two</p>
                 </div>
             </div>
@@ -86,7 +133,7 @@
                 <div class="image-placeholder"></div> <!-- Placeholder for Janet's image -->
                 <div class="member-details">
                     <h3>Janet Mc Coy, CFP, AIF</h3>
-                    <p><strong>YTC Board Vice Chair</strong></p>
+                    <p><span class="highlight">YTC Board Vice Chair</span></p>
                     <p>Vice President, Client Services, Seal Financial Services, Retired</p>
                 </div>
             </div>
@@ -119,7 +166,9 @@
                 </div>
             </div>
         </div>
-        
+
+        <div class="divider"></div>
+
         <div class="section">
             <h2>Our Staff</h2>
             <div class="staff-member">
@@ -136,55 +185,7 @@
                     <p>Founding President</p>
                 </div>
             </div>
-            <div class="staff-member">
-                <div class="image-placeholder"></div> <!-- Placeholder for Juaquin's image -->
-                <div class="member-details">
-                    <h3>Juaquin Mobley</h3>
-                    <p>Restorative Justice Facilitator, Owner CommunicationWorks</p>
-                </div>
-            </div>
-            <div class="staff-member">
-                <div class="image-placeholder"></div> <!-- Placeholder for Leslye's image -->
-                <div class="member-details">
-                    <h3>Leslye Taylor</h3>
-                    <p>Restorative Justice Facilitator, Trainer, Serving Southern Colorado</p>
-                </div>
-            </div>
-            <div class="staff-member">
-                <div class="image-placeholder"></div> <!-- Placeholder for Jan's image -->
-                <div class="member-details">
-                    <h3>Jan Rodgers</h3>
-                    <p>Restorative Justice Facilitator, Trainer, Certified Mediator, Dispute Resolution Specialist</p>
-                </div>
-            </div>
-            <div class="staff-member">
-                <div class="image-placeholder"></div> <!-- Placeholder for Terry's image -->
-                <div class="member-details">
-                    <h3>Terry Taylor</h3>
-                    <p>Restorative Justice Facilitator, Trainer, Serving Southern Colorado</p>
-                </div>
-            </div>
-            <div class="staff-member">
-                <div class="image-placeholder"></div> <!-- Placeholder for Ron's image -->
-                <div class="member-details">
-                    <h3>Ron Wiley, PhD</h3>
-                    <p>Restorative Justice Facilitator, Trainer, Resource Exchange International, Serving Colorado and Kazakhstan</p>
-                </div>
-            </div>
-            <div class="staff-member">
-                <div class="image-placeholder"></div> <!-- Placeholder for Jeanine's image -->
-                <div class="member-details">
-                    <h3>Jeanine Wiley</h3>
-                    <p>Restorative Justice Facilitator, Trainer, Serving Colorado and Kazakhstan</p>
-                </div>
-            </div>
-            <div class="staff-member">
-                <div class="image-placeholder"></div> <!-- Placeholder for Martin's image -->
-                <div class="member-details">
-                    <h3>Martin Toland</h3>
-                    <p>Security Coordinator, Harrison School District Two, previously with CSPD</p>
-                </div>
-            </div>
+            <!-- Additional staff members go here with similar structure -->
         </div>
     </div>
 </body>
