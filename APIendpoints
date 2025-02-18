@@ -1,0 +1,4 @@
+/register-teacher (POST) → Creates a teacher account
+/add-student (POST) → Assigns a student to a teacher
+/get-student-progress (GET) → Retrieves progress for a student
+/get-all-students (GET) → Retrieves all students for a teacher
