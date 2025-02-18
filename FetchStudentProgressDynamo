@@ -1,0 +1,12 @@
+import boto3
+
+def lambda_handler(event, context):
+    dynamodb = boto3.resource('dynamodb')
+    table = dynamodb.Table('Students')
+    teacher_id = event['queryStringParameters']['teacher_id']
+
+    response = table.scan(FilterExpression="teacher_id = :t", ExpressionAttributeValues={":t": teacher_id})
+    return {
+        'statusCode': 200,
+        'body': response['Items']
+    }
