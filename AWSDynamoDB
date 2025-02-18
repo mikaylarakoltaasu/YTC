@@ -1,0 +1,2 @@
+Teachers (teacher_id, email, name, license_count, created_at)
+Students (student_id, teacher_id, email, name, progress, created_at)
