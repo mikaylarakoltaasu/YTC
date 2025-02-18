@@ -1,0 +1,14 @@
+CREATE TABLE teachers (
+    teacher_id SERIAL PRIMARY KEY,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    name VARCHAR(255),
+    license_count INT DEFAULT 0
+);
+
+CREATE TABLE students (
+    student_id SERIAL PRIMARY KEY,
+    teacher_id INT REFERENCES teachers(teacher_id),
+    email VARCHAR(255) UNIQUE NOT NULL,
+    name VARCHAR(255),
+    progress JSONB DEFAULT '{}'
+);
