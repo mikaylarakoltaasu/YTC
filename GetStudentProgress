@@ -1,0 +1,15 @@
+import boto3
+
+# Initialize DynamoDB client
+dynamodb = boto3.resource('dynamodb')
+table = dynamodb.Table('StudentProgress')
+
+def get_student_progress(student_id):
+    """Fetch progress of a student from DynamoDB."""
+    response = table.get_item(Key={'student_id': student_id})
+    return response.get('Item', {})
+
+if __name__ == "__main__":
+    student_id = "student123"
+    progress = get_student_progress(student_id)
+    print(f"Student Progress: {progress}")
