@@ -1,0 +1,15 @@
+# Teacher Dashboard - AWS Integration
+
+This project manages student progress for each YTC course using AWS services.
+
+## Features
+- DynamoDB for storing student progress
+- Flask API for teacher interactions
+- React-based teacher dashboard
+- GitHub Actions for auto-deployment
+
+## AWS Setup
+To set up:
+1. Install AWS CLI and configure credentials.
+2. Create a DynamoDB table: `StudentProgress`.
+3. Run the API: `python app.py`.
