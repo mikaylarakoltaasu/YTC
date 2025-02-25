@@ -1,0 +1,18 @@
+from flask import Flask, jsonify
+import boto3
+
+app = Flask(__name__)
+
+# AWS DynamoDB setup
+dynamodb = boto3.resource('dynamodb')
+table = dynamodb.Table('StudentProgress')
+
+@app.route('/student/<student_id>', methods=['GET'])
+def get_student(student_id):
+    """API route to get a student's progress."""
+    response = table.get_item(Key={'student_id': student_id})
+    student_data = response.get('Item', {})
+    return jsonify(student_data)
+
+if __name__ == '__main__':
+    app.run(debug=True)
