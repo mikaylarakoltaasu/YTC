@@ -1,14 +1,14 @@
 function sendDiscountCode() {
-  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Form Responses 1"); // Change to your sheet name
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Form Responses 1");
   var lastRow = sheet.getLastRow();
   
-  var email = sheet.getRange(lastRow, 2).getValue(); // Adjust column number if needed
-  var discountCode = "FREEACCESS2025"; // Change this for each class
+  var email = sheet.getRange(lastRow, 2).getValue(); 
+  var discountCode = "FREEACCESS2025"; 
 
   var subject = "Your Free Course Access Code!";
   var body = "Hi there,\n\nHere’s your free access code for the course:\n\n" +
              "🔑 **" + discountCode + "**\n\n" +
-             "Use this link to sign up: [Your Squarespace Member Area URL]\n\n" +
+             "Use this link to sign up: (add MemberArea URL)\n\n" +
              "If you have any issues, contact your instructor.\n\nBest,\n[Your Name]";
   
   // Send the email
