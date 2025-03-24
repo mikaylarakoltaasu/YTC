@@ -1,7 +1,13 @@
-ok this code works remember it <script>
+<script>
 async function fetchStudents() {
-    const teacherId = "T12345";  // Replace with dynamic teacher ID if needed
-    const apiUrl = https://phygliakte.execute-api.us-east-1.amazonaws.com/get-students?teacher_id=${teacherId};
+    const teacherId = document.getElementById("teacher-id-input").value.trim();
+
+    if (!teacherId) {
+        document.getElementById("student-list").innerHTML = `<p style="color: red;">Please enter a valid Teacher ID.</p>`;
+        return;
+    }
+
+    const apiUrl = `https://phygliakte.execute-api.us-east-1.amazonaws.com/get-students?teacher_id=${teacherId}`;
     
     try {
         const response = await fetch(apiUrl, {
@@ -12,7 +18,7 @@ async function fetchStudents() {
         });
 
         if (!response.ok) {
-            throw new Error(HTTP error! Status: ${response.status});
+            throw new Error(`HTTP error! Status: ${response.status}`);
         }
 
         const data = await response.json();
@@ -25,18 +31,22 @@ async function fetchStudents() {
             output += "<li>No students found.</li>";
         } else {
             data.forEach(student => {
-                output += <li><strong>${student.name}</strong> (${student.email}): ${JSON.stringify(student.progress)}</li>;
+                output += `<li><strong>${student.name}</strong> (${student.email}): ${student.progress}</li>`;
             });
         }
         output += "</ul>";
         
         document.getElementById("student-list").innerHTML = output;
     } catch (error) {
-        document.getElementById("student-list").innerHTML = <p style="color: red;">Error: ${error.message}</p>;
+        document.getElementById("student-list").innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
         console.error("Fetch error:", error);
     }
 }
-window.onload = fetchStudents;
 </script>
 
-<div id="student-list">Loading...</div>
+<!-- Teacher ID Input and Button -->
+<label for="teacher-id-input">Enter Teacher ID:</label>
+<input type="text" id="teacher-id-input" placeholder="Enter Teacher ID" />
+<button onclick="fetchStudents()">Fetch Students</button>
+
+<div id="student-list">Please enter your Teacher ID above.</div>
