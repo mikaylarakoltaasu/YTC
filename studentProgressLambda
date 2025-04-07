@@ -1,0 +1,84 @@
+import json
+import boto3
+
+# Connect to DynamoDB in the correct region
+dynamodb = boto3.resource("dynamodb", region_name="us-east-2")
+student_table = dynamodb.Table("Students")
+
+def lambda_handler(event, context):
+    try:
+        body = json.loads(event["body"])
+        student_id = body.get("student_id")
+        teacher_id = body.get("teacher_id")
+        learned_text = body.get("learned", "")
+
+        if not student_id or not teacher_id:
+            return {
+                "statusCode": 400,
+                "headers": cors_headers(),
+                "body": json.dumps({"error": "Missing student_id or teacher_id"})
+            }
+
+        # Get current student record
+        response = student_table.get_item(
+            Key={
+                "student_id": student_id,
+                "teacher_id": teacher_id
+            }
+        )
+        student = response.get("Item")
+
+        if not student:
+            return {
+                "statusCode": 404,
+                "headers": cors_headers(),
+                "body": json.dumps({"error": "Student not found"})
+            }
+
+        # Parse and increment progress
+        current_progress_str = student.get("progress", "0%").replace("%", "")
+        try:
+            current_progress = int(current_progress_str)
+        except ValueError:
+            current_progress = 0
+
+        new_progress = min(current_progress + 10, 100)
+        new_progress_str = f"{new_progress}%"
+
+        # Prepare update expression
+        update_expr = "SET progress = :p"
+        expr_values = {":p": new_progress_str}
+
+        if learned_text:
+            update_expr += ", reflection = :r"
+            expr_values[":r"] = learned_text
+
+        # Update the record
+        student_table.update_item(
+            Key={
+                "student_id": student_id,
+                "teacher_id": teacher_id
+            },
+            UpdateExpression=update_expr,
+            ExpressionAttributeValues=expr_values
+        )
+
+        return {
+            "statusCode": 200,
+            "headers": cors_headers(),
+            "body": json.dumps({"message": f"Progress updated to {new_progress_str}"})
+        }
+
+    except Exception as e:
+        return {
+            "statusCode": 500,
+            "headers": cors_headers(),
+            "body": json.dumps({"error": str(e)})
+        }
+
+def cors_headers():
+    return {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "POST",
+        "Access-Control-Allow-Headers": "Content-Type"
+    }
